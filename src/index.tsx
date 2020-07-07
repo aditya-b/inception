@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import './sass/index.css';
+import App from './app/App';
 import * as serviceWorker from './serviceWorker';
+import { ToastContainer } from "react-toastify";
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
+    <ToastContainer newestOnTop={true}/>
   </React.StrictMode>,
   document.getElementById('root')
 );
