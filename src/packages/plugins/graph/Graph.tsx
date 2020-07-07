@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Line } from "react-chartjs-2";
 import { PanelModel } from "../../data";
 import { map, join, parseInt } from 'lodash';
 import { QueryEditor } from "../../datasources";
@@ -15,25 +14,7 @@ export class Graph extends Component<GraphProps> {
     
     constructor(props: GraphProps) {
         super(props);
-        const options = {
-            responsive: true,
-            scales: {
-                xAxes: [
-                    {
-                        type: 'time'
-                    }
-                ]
-            },
-            animation: {
-                duration: 10 // general animation time
-              },
-              hover: {
-                animationDuration: 0 // duration of animations when hovering an item
-              },
-              responsiveAnimationDuration: 10, // animation duration after a resize
-        }
-        this.plotRef = React.createRef();
-        this.plot = <Line ref={this.plotRef} data={[]} options={options} />;
+        // add graph component here
     }
 
 

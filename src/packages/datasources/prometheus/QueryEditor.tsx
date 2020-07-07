@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { PrometheusQueryProcessor } from "./QueryProcessor";
-import { Autocomplete, TextInput } from "evergreen-ui";
 import moment from "moment";
 import { join } from "lodash";
 import { alertManager } from "../../ui";
@@ -57,7 +56,7 @@ export class QueryEditor extends Component<Props>{
             range: {
                 from, to
             },
-            step: 15
+            step: 120
         })
         .then(result => {
             const { error, errors, data } = result;
@@ -73,34 +72,35 @@ export class QueryEditor extends Component<Props>{
         const { query, isReady } = this.state;
         return <div className="prom-query-editor">
             { isReady && 
-                <Autocomplete
-                    title="Metrics"
-                    onChange={this.queryUpdated}
-                    items={this.metrics}
-                    selectedItem={query}
-                    inputValue={query}
-                    >
-                    {(props: any) => {
-                        const { getInputProps, getRef, inputValue, openMenu, closeMenu  } = props
-                        return (
-                        <TextInput
-                            placeholder="Query"
-                            value={inputValue}
-                            innerRef={getRef}
-                            {...getInputProps({
-                            onFocus: () => {
-                                openMenu();
-                            },
-                            onChange: (evt: any) => this.queryUpdated(evt.target.value),
-                            onBlur: () => { 
-                                closeMenu();
-                                setTimeout(() => this.runQuery());
-                            }
-                            })}
-                        />
-                        )
-                    }}
-                </Autocomplete>
+                // <Autocomplete
+                //     title="Metrics"
+                //     onChange={this.queryUpdated}
+                //     items={this.metrics}
+                //     selectedItem={query}
+                //     inputValue={query}
+                //     >
+                //     {(props: any) => {
+                //         const { getInputProps, getRef, inputValue, openMenu, closeMenu  } = props
+                //         return (
+                //         <TextInput
+                //             placeholder="Query"
+                //             value={inputValue}
+                //             innerRef={getRef}
+                //             {...getInputProps({
+                //             onFocus: () => {
+                //                 openMenu();
+                //             },
+                //             onChange: (evt: any) => this.queryUpdated(evt.target.value),
+                //             onBlur: () => { 
+                //                 closeMenu();
+                //                 setTimeout(() => this.runQuery());
+                //             }
+                //             })}
+                //         />
+                //         )
+                //     }}
+                // </Autocomplete>
+                'Create an auto complete prom query field using material UI'
             }
             { !isReady &&
                 'Loading metrics...'
